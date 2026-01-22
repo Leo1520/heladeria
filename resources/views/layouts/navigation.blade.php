@@ -1,18 +1,18 @@
-<nav x-data="{ open: false }" style="background: linear-gradient(135deg, #1FB9A2 0%, #83D7D0 100%);" class="border-b border-white/20 shadow-lg">
+<nav x-data="{ open: false }" style="background: linear-gradient(135deg, #1FB9A2 0%, #83D7D0 100%); margin: 0; padding: 0;" class="fixed top-0 left-0 w-full z-50 border-b border-white/20 shadow-lg">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16">
-            <div class="flex">
+    <div class="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style="margin-top: 0;">
+        <div class="flex justify-between items-center h-20 w-full">
+            <div class="flex items-center gap-10">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}" class="flex items-center gap-2">
-                        <img src="{{ asset('img/logoPrincipal.png') }}" alt="Heladería Santa Rosa" class="h-12 w-auto">
-                        <span class="text-white font-bold text-xl hidden sm:block">Santa Rosa</span>
+                    <a href="{{ route('home') }}" class="flex items-center gap-3">
+                        <img src="{{ asset('img/logoPrincipal.png') }}" alt="Heladería Santa Rosa" class="h-16 w-auto">
+                        <span class="text-white font-bold text-2xl hidden sm:block drop-shadow-lg">Santa Rosa</span>
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <div class="hidden space-x-6 sm:flex items-center">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home') || request()->routeIs('cliente.catalogo')" class="text-white hover:text-pink-200">
                         {{ __('Catálogo') }}
                     </x-nav-link>

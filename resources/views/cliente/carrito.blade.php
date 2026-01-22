@@ -1,9 +1,9 @@
 <x-app-layout>
     <x-slot name="header">
-        <div style="background: linear-gradient(135deg, #1FB9A2 0%, #83D7D0 100%);" class="-mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-6">
-            <div class="max-w-7xl mx-auto flex justify-between items-center">
+        <div style="background: linear-gradient(135deg, #1FB9A2 0%, #83D7D0 100%);" class="px-4 sm:px-6 lg:px-8 py-6 shadow-lg">
+            <div class="max-w-7xl mx-auto flex justify-between items-center flex-wrap gap-4">
                 <div>
-                    <h2 class="font-bold text-3xl text-white leading-tight">🛒 Mi Carrito</h2>
+                    <h2 class="font-bold text-3xl text-white leading-tight drop-shadow-lg">🛒 Mi Carrito</h2>
                     <p class="text-white/90 text-sm mt-1">Revisa tus productos antes de finalizar</p>
                 </div>
                 <a href="{{ route('cliente.catalogo') }}" class="text-white font-bold py-2 px-6 rounded-full shadow-lg hover:shadow-xl transition-all" style="background-color: #D03994;">

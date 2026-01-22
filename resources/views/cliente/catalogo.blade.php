@@ -1,8 +1,14 @@
 <x-app-layout>
+    <!-- div vacio para separar el borde con el div de Bienvenido a Heladería Santa Rosa -->
+   
     <x-slot name="header">
-        <div style="background: linear-gradient(135deg, #1FB9A2 0%, #83D7D0 100%);" class="-mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-8">
+        <br>
+        <br>
+        <br>
+        <br>
+        <div style="background: linear-gradient(135deg, #D03994 0%, #ECCFD8 100%); width: 100%; margin: ; padding: 2rem 1rem 2rem 1rem;">
             <div class="max-w-7xl mx-auto text-center">
-                <h1 class="text-4xl font-bold text-white mb-2">🍦 Bienvenido a Heladería Santa Rosa</h1>
+                <h1 class="text-4xl font-bold text-white mb-2 drop-shadow-lg">🍦 Bienvenido a Heladería Santa Rosa</h1>
                 <p class="text-white/90 text-lg">Los mejores helados artesanales de la ciudad</p>
             </div>
         </div>
