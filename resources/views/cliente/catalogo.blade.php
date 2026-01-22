@@ -1,11 +1,14 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Catálogo de Helados') }}
-        </h2>
+        <div style="background: linear-gradient(135deg, #1FB9A2 0%, #83D7D0 100%);" class="-mx-4 sm:-mx-6 lg:-mx-8 px-4 sm:px-6 lg:px-8 py-8">
+            <div class="max-w-7xl mx-auto text-center">
+                <h1 class="text-4xl font-bold text-white mb-2">🍦 Bienvenido a Heladería Santa Rosa</h1>
+                <p class="text-white/90 text-lg">Los mejores helados artesanales de la ciudad</p>
+            </div>
+        </div>
     </x-slot>
 
-    <div class="py-12">
+    <div class="py-12" style="background-color: #ECCFD8;">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <!-- Barra de búsqueda y filtros -->
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg mb-6 p-6">
@@ -63,16 +66,22 @@
                             </div>
                             
                             @if($producto->stock > 0)
-                                <form action="{{ route('cliente.carrito.agregar', $producto) }}" method="POST">
-                                    @csrf
-                                    <div class="flex gap-2">
-                                        <input type="number" name="cantidad" value="1" min="1" max="{{ $producto->stock }}" 
-                                               class="w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                                        <button type="submit" class="flex-1 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
-                                            Agregar
-                                        </button>
-                                    </div>
-                                </form>
+                                @auth
+                                    <form action="{{ route('cliente.carrito.agregar', $producto) }}" method="POST">
+                                        @csrf
+                                        <div class="flex gap-2">
+                                            <input type="number" name="cantidad" value="1" min="1" max="{{ $producto->stock }}" 
+                                                   class="w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                                            <button type="submit" class="flex-1 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
+                                                Agregar
+                                            </button>
+                                        </div>
+                                    </form>
+                                @else
+                                    <a href="{{ route('login') }}" class="block w-full px-4 py-2 bg-green-500 text-white text-center rounded hover:bg-green-600">
+                                        Iniciar sesión para comprar
+                                    </a>
+                                @endauth
                             @else
                                 <button disabled class="w-full px-4 py-2 bg-gray-300 text-gray-500 rounded cursor-not-allowed">
                                     Agotado

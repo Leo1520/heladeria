@@ -1,0 +1,113 @@
+/* Paleta de Colores - Heladería Santa Rosa */
+:root {
+    --color-primary: #1FB9A2;      /* Turquesa/Verde agua */
+    --color-secondary: #D03994;     /* Rosa/Magenta */
+    --color-tertiary: #83D7D0;      /* Azul agua claro */
+    --color-quaternary: #ECCFD8;    /* Rosa pastel */
+    --color-accent: #819985;        /* Verde gris */
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Botones personalizados */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #1a9d88;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(31, 185, 162, 0.3);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #b73080;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(208, 57, 148, 0.3);
+}
+
+/* Cards de productos */
+.product-card {
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.product-card:hover {
+    border-color: var(--color-secondary);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Fondos con gradientes */
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-tertiary) 100%);
+}
+
+.bg-gradient-secondary {
+    background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-quaternary) 100%);
+}
+
+/* Textos con colores de marca */
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-secondary {
+    color: var(--color-secondary);
+}
+
+.text-accent {
+    color: var(--color-accent);
+}
+
+/* Badge/Etiquetas */
+.badge-categoria {
+    background-color: var(--color-quaternary);
+    color: var(--color-accent);
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Animaciones suaves */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in {
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* Loader de helados */
+.loader-helado {
+    display: inline-block;
+    animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}

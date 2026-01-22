@@ -9,9 +9,7 @@ use App\Http\Controllers\Cliente\PedidoController;
 use Illuminate\Support\Facades\Route;
 
 // Ruta pública principal - Catálogo de productos
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [CatalogoController::class, 'index'])->name('home');
 
 // Dashboard que redirige según el rol del usuario
 Route::get('/dashboard', function () {
@@ -49,21 +47,24 @@ Route::middleware(['auth', 'verified', 'role:admin'])->prefix('admin')->name('ad
     Route::patch('/pedidos/{pedido}/estado', [AdminPedidoController::class, 'updateEstado'])->name('pedidos.updateEstado');
 });
 
-// Rutas protegidas para CLIENTE
-Route::middleware(['auth', 'verified', 'role:cliente'])->prefix('cliente')->name('cliente.')->group(function () {
-    
-    // Catálogo de productos
+// Rutas PÚBLICAS de catálogo (sin autenticación)
+Route::prefix('cliente')->name('cliente.')->group(function () {
+    // Catálogo de productos - Acceso público
     Route::get('/catalogo', [CatalogoController::class, 'index'])->name('catalogo');
     Route::get('/producto/{producto}', [CatalogoController::class, 'show'])->name('producto.show');
+});
+
+// Rutas protegidas para CLIENTES (requieren autenticación)
+Route::middleware(['auth', 'verified', 'role:cliente'])->prefix('cliente')->name('cliente.')->group(function () {
     
-    // Carrito de compras
+    // Carrito de compras (requiere login)
     Route::get('/carrito', [CarritoController::class, 'index'])->name('carrito.index');
     Route::post('/carrito/agregar/{producto}', [CarritoController::class, 'agregar'])->name('carrito.agregar');
     Route::patch('/carrito/actualizar/{producto}', [CarritoController::class, 'actualizar'])->name('carrito.actualizar');
     Route::delete('/carrito/eliminar/{producto}', [CarritoController::class, 'eliminar'])->name('carrito.eliminar');
     Route::delete('/carrito/vaciar', [CarritoController::class, 'vaciar'])->name('carrito.vaciar');
     
-    // Pedidos
+    // Pedidos (requiere login)
     Route::get('/pedidos', [PedidoController::class, 'index'])->name('pedidos.index');
     Route::get('/pedidos/crear', [PedidoController::class, 'create'])->name('pedidos.create');
     Route::post('/pedidos', [PedidoController::class, 'store'])->name('pedidos.store');
